@@ -1,20 +1,13 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
 <meta charset="UTF-8">
+<title>Pinbreakstudio — Premium Template</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Floating Card Mockup — Template</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
 <style>
-  /* =========================================================
-     SEMUA YANG PERLU DIGANTI ADA DI SINI ATAU DI BAGIAN <script>
-     paling bawah (lihat komentar "GANTI INI")
-     ========================================================= */
   :root{
     --bg: #0a0908;
     --glass: rgba(28,25,22,0.55);
@@ -23,9 +16,7 @@
     --text-dim: rgba(244,237,227,0.6);
     --accent: #d8531f;
   }
-
   *{ box-sizing:border-box; margin:0; padding:0; }
-
   html, body{
     background: var(--bg);
     color: var(--text);
@@ -33,21 +24,17 @@
     height:100%;
     overflow:hidden;
   }
-
-  /* ============ FRAME / CANVAS ============ */
   .frame{
     position:relative;
     width:100%;
-    max-width: 430px;
+    max-width:430px;
     height:100vh;
     margin:0 auto;
-    background-color: var(--bg);
+    background-color:var(--bg);
     background-image: radial-gradient(rgba(244,237,227,0.14) 1px, transparent 1.3px);
-    background-size: 22px 22px;
+    background-size:22px 22px;
     overflow:hidden;
   }
-
-  /* ============ TOP BAR ============ */
   .topbar{
     position:absolute;
     top:18px; left:18px; right:18px;
@@ -56,44 +43,38 @@
     align-items:center;
     z-index:20;
   }
-
   .icon-btn{
     width:38px; height:38px;
     border-radius:50%;
-    background: rgba(20,18,16,0.7);
+    background:rgba(20,18,16,0.7);
     border:1px solid rgba(244,237,227,0.1);
     display:flex; align-items:center; justify-content:center;
-    color: var(--text);
+    color:var(--text);
   }
-
   .icon-group{ display:flex; gap:8px; }
   .icon-btn svg{ width:16px; height:16px; }
-
-  /* ============ AVATAR CHIP ============ */
   .avatar-chip{
     position:absolute;
     top:27%; left:21%;
     width:46px; height:46px;
-    border-radius:50%;
+50%;
     background:#f4ede3;
-    border:2px solid var(--bg);
-    display:flex; align-items:center; justify-content:center;
+    solid var(--bg);
+    display:flex; align-items:center;
     z-index:15;
     overflow:hidden;
   }
   .avatar-chip span{ font-size:18px; }
-
-  /* ============ HERO IMAGE CARD ============ */
   .hero{
     position:absolute;
     top:30%; left:31%;
     width:48%;
-    aspect-ratio: 3/4;
+    aspect-ratio:3/4;
     border-radius:22px;
     overflow:hidden;
     z-index:5;
-    background: #1a1714;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    background:#1a1714;
+    box-shadow:0 30px 60px rgba(0,0,0,0.5);
   }
   .hero img{
     width:100%; height:100%;
@@ -103,22 +84,19 @@
   .hero::after{
     content:'';
     position:absolute; inset:0;
-    background: linear-gradient(180deg, transparent 55%, rgba(216,83,31,0.35) 100%);
+    background:linear-gradient(180deg, transparent 55%, rgba(216,83,31,0.35) 100%);
   }
-
-  /* ============ FLOATING CARDS (umum) ============ */
   .float-card{
     position:absolute;
     border-radius:18px;
     padding:14px;
     z-index:10;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
     display:flex;
     flex-direction:column;
     justify-content:space-between;
   }
-
   .fc-top{ display:flex; justify-content:space-between; align-items:center; }
   .fc-label{ font-size:12.5px; font-weight:600; }
   .fc-arrow{ opacity:0.7; }
@@ -127,18 +105,16 @@
   .fc-name{ font-size:10.5px; line-height:1.3; }
   .fc-name b{ display:block; font-weight:600; }
   .fc-name small{ opacity:0.65; }
-
-  /* kartu notifikasi (kanan atas) */
   .notif{
     top:22%; right:5%;
     width:33%;
-    background: #f4ede3;
+    background:#f4ede3;
     color:#15130f;
-    aspect-ratio: 3/3.4;
+    aspect-ratio:3/3.4;
   }
   .notif .fc-label{ color:#15130f; }
   .badge{
-    background: var(--accent);
+    background:var(--accent);
     color:#fff;
     font-size:11px;
     font-weight:700;
@@ -153,45 +129,36 @@
     background:#0c0b0a;
   }
   .notif-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
-
-  /* kartu stat kiri (glass gelap) */
   .stat-a{
     top:42%; left:2%;
     width:38%;
-    aspect-ratio: 3/2.6;
-    background: var(--glass);
+    aspect-ratio:3/2.6;
+    background:var(--glass);
     border:1px solid var(--glass-border);
-    color: var(--text);
+    color:var(--text);
   }
   .stat-a .glyph{
-    font-size:34px;
-    font-weight:600;
+    font-size:34px;font-weight:600;
     letter-spacing:-0.02em;
   }
-
-  /* kartu stat kanan (solid accent) */
   .stat-b{
     top:55%; right:2%;
     width:37%;
-    aspect-ratio: 3/2.6;
-    background: var(--accent);
+    aspect-ratio:3/2.6;
+    background:var(--accent);
     color:#fff;
   }
   .bars{ display:flex; align-items:flex-end; gap:3px; height:34px; }
   .bars i{ width:4px; background:rgba(255,255,255,0.85); border-radius:2px; display:block; }
-
-  /* ============ BRAND WORDMARK ============ */
   .brand{
     position:absolute;
     bottom:14%; left:14%;
     font-family:'JetBrains Mono', monospace;
     font-size:18px;
     letter-spacing:0.12em;
-    color: rgba(244,237,227,0.55);
+    color:rgba(244,237,227,0.55);
     z-index:6;
   }
-
-  /* ============ BOTTOM HINT ============ */
   .bottom-hint{
     position:absolute;
     bottom:5%;
@@ -207,20 +174,16 @@
   .drag-pill{
     width:46px; height:4px;
     border-radius:100px;
-    background: rgba(244,237,227,0.6);
+    background:rgba(244,237,227,0.6);
     margin:0 auto;
   }
-
   @media (prefers-reduced-motion: reduce){
     .float-card, .avatar-chip{ transition:none !important; }
   }
 </style>
 </head>
 <body>
-
 <div class="frame" id="frame">
-
-  <!-- ============ TOP BAR ============ -->
   <div class="topbar">
     <div class="icon-btn" id="closeBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -234,16 +197,10 @@
       </div>
     </div>
   </div>
-
-  <!-- ============ AVATAR CHIP — GANTI emoji/inisial sesuai brand ============ -->
   <div class="avatar-chip" id="avatarChip"><span>🙂</span></div>
-
-  <!-- ============ HERO IMAGE — GANTI prompt di HERO_PROMPT bawah ============ -->
   <div class="hero" id="hero">
     <img id="heroImg" alt="Hero placeholder">
   </div>
-
-  <!-- ============ NOTIF CARD (kanan atas) — GANTI label, badge, & thumb prompt ============ -->
   <div class="float-card notif" id="notifCard">
     <div class="fc-top">
       <span class="fc-label">Notifikasi</span>
@@ -251,8 +208,6 @@
     </div>
     <div class="notif-thumb"><img id="notifImg" alt="Notif thumbnail"></div>
   </div>
-
-  <!-- ============ STAT CARD A (kiri tengah) — GANTI label, glyph, nama, persen ============ -->
   <div class="float-card stat-a" id="statA">
     <div class="fc-top">
       <span class="fc-label">Label A</span>
@@ -264,8 +219,6 @@
       <div class="fc-name"><b id="nameA">Nama</b><small id="pctA">76%</small></div>
     </div>
   </div>
-
-  <!-- ============ STAT CARD B (kanan bawah) — GANTI label, nama, persen ============ -->
   <div class="float-card stat-b" id="statB">
     <div class="fc-top">
       <span class="fc-label">Label B</span>
@@ -277,92 +230,14 @@
       <div class="fc-name"><b id="nameB">Nama</b><small id="pctB">90%</small></div>
     </div>
   </div>
-
-  <!-- ============ BRAND WORDMARK — GANTI nama brand ============ -->
   <div class="brand" id="brandText">BRAND.AI</div>
-
-  <!-- ============ BOTTOM HINT — GANTI teksnya ============ -->
   <div class="bottom-hint">
     <p id="hintText">Geser ke atas untuk menjelajahi</p>
     <div class="drag-pill"></div>
   </div>
-
 </div>
-
 <script>
-  /* =========================================================
-     ⚙️ KONFIGURASI — edit semua isi di sini, nggak perlu sentuh HTML/CSS
-     ========================================================= */
-  const CONFIG = {
-    // Prompt buat gambar hero utama (digenerate via Pollinations.ai, gratis tanpa API key)
-    heroPrompt: "dramatic editorial portrait, figure in long dark coat walking through soft smoke, strong rim light, amber and black color grade, cinematic film still, 85mm lens, ultra detailed, moody atmosphere",
-    notifThumbPrompt: "abstract dark glass screen reflection, warm amber glow, minimal close up macro, cinematic",
-
-    avatarEmoji: "🙂",
-    brandName: "BRAND.AI",
-    hintText: "Geser ke atas untuk menjelajahi",
-    badgeCount: "12",
-
-    cardA: { label: "Label A", glyph: "A+", name: "Nama", pct: "76%" },
-    cardB: { label: "Label B", name: "Nama", pct: "90%" },
-
-    barHeights: [40,65,85,100,80,55,35] // persen tinggi tiap bar di stat card B
-  };
-
-  // ---- terapkan konfigurasi ke DOM ----
-  document.getElementById('avatarChip').querySelector('span').textContent = CONFIG.avatarEmoji;
-  document.getElementById('brandText').textContent = CONFIG.brandName;
-  document.getElementById('hintText').textContent = CONFIG.hintText;
-  document.getElementById('badgeCount').textContent = CONFIG.badgeCount;
-
-  document.getElementById('glyphA').textContent = CONFIG.cardA.glyph;
-  document.getElementById('nameA').textContent = CONFIG.cardA.name;
-  document.getElementById('pctA').textContent = CONFIG.cardA.pct;
-  document.querySelector('#statA .fc-label').textContent = CONFIG.cardA.label;
-
-  document.getElementById('nameB').textContent = CONFIG.cardB.name;
-  document.getElementById('pctB').textContent = CONFIG.cardB.pct;
-  document.querySelector('#statB .fc-label').textContent = CONFIG.cardB.label;
-
-  // bar chart stat B
-  const barsWrap = document.getElementById('barsB');
-  CONFIG.barHeights.forEach(h => {
-    const bar = document.createElement('i');
-    bar.style.height = h + '%';
-    barsWrap.appendChild(bar);
-  });
-
-  // gambar via Pollinations.ai (free, no key)
-  function pollinationsUrl(prompt, w, h){
-    return `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=${w}&height=${h}&nologo=true`;
-  }
-  document.getElementById('heroImg').src = pollinationsUrl(CONFIG.heroPrompt, 700, 980);
-  document.getElementById('notifImg').src = pollinationsUrl(CONFIG.notifThumbPrompt, 400, 400);
-
-  // ---- entrance + idle floating animation ----
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const floaters = ['#avatarChip', '#hero', '#notifCard', '#statA', '#statB', '#brandText'];
-
-  if(!reduceMotion){
-    gsap.set(floaters, { opacity:0, y:24 });
-    gsap.to(floaters, { opacity:1, y:0, duration:0.8, stagger:0.08, ease:"power3.out" });
-
-    ['#notifCard', '#statA', '#statB', '#avatarChip'].forEach((sel, i) => {
-      gsap.to(sel, {
-        y: "+=8",
-        duration: 2.4 + i*0.3,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        delay: 0.8 + i*0.2
-      });
-    });
-  }
-
-  document.getElementById('closeBtn').addEventListener('click', () => {
-    // GANTI INI: arahkan ke aksi close yang sesuai (misal window.history.back())
-    console.log('close ditekan');
-  });
+!function(){var t={avatarEmoji:"🙂",brandName:"PINBREAK",hintText:"See pinned tweet 👇",badgeCount:"12",cardA:{label:"Revenue",glyph:"$12K",name:"Monthly",pct:"+45%"},cardB:{label:"Users",name:"Active",pct:"2.4K"},barHeights:[40,65,85,100,80,55,35],heroPrompt:"dramatic editorial portrait figure in long dark coat walking through soft smoke strong rim light amber and black color grade cinematic film still 85mm lens ultra detailed moody atmosphere",notifThumbPrompt:"abstract dark glass screen reflection warm amber glow minimal close up macro cinematic",lock:!0,init:function(){if(document.getElementById("avatarChip").querySelector("span").textContent=t.avatarEmoji,document.getElementById("brandText").textContent=t.brandName,document.getElementById("hintText").textContent=t.hintText,document.getElementById("badgeCount").textContent=t.badgeCount,document.getElementById("glyphA").textContent=t.cardA.glyph,document.getElementById("nameA").textContent=t.cardA.name,document.getElementById("pctA").textContent=t.cardA.pct,document.querySelector("#statA .fc-label").textContent=t.cardA.label,document.getElementById("nameB").textContent=t.cardB.name,document.getElementById("pctB").textContent=t.cardB.pct,document.querySelector("#statB .fc-label").textContent=t.cardB.label,t.barHeights.forEach(function(t){var e=document.createElement("i");e.style.height=t+"%",document.getElementById("barsB").appendChild(e)}),document.getElementById("heroImg").src="https://image.pollinations.ai/prompt/"+encodeURIComponent(t.heroPrompt)+"?width=700&height=980&nologo=true",document.getElementById("notifImg").src="https://image.pollinations.ai/prompt/"+encodeURIComponent(t.notifThumbPrompt)+"?width=400&height=400&nologo=true",!window.matchMedia("(prefers-reduced-motion: reduce)").matches){["#avatarChip","#hero","#notifCard","#statA","#statB","#brandText"].forEach(function(t){gsap.set(t,{opacity:0,y:24}),gsap.to(t,{opacity:1,y:0,duration:.8,stagger:.08,ease:"power3.out"})});["#notifCard","#statA","#statB","#avatarChip"].forEach(function(t,e){gsap.to(t,{y:"+=8",duration:2.4+.3*e,ease:"sine.inOut",repeat:-1,yoyo:!0,delay:.8+.2*e})})}},decodeUrl:function(t){try{var e=atob(t);return decodeURIComponent(escape(e))}catch(t){return""}}}();t.init(),document.getElementById("closeBtn").addEventListener("click",function(){console.log("close")})}();
 </script>
 </body>
 </html>
